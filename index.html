@@ -1,72 +1,69 @@
 ﻿<!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8"> <!-- Кодування сторінки -->
+    <meta charset="UTF-8"> <!-- Кодування українською -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Адаптивність -->
     <title>Форми авторизації та реєстрації</title>
 
-    <!-- Підключення CSS-файлу зі стилями -->
+    <!-- Підключення стилів -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Підключення іконок FontAwesome для очей та галочки -->
+    <!-- Іконки FontAwesome для очей (показ пароля) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<!-- Верхнє навігаційне меню -->
+<!-- Верхня панель (навігація) -->
 <nav class="navbar">
     <div class="block-wrapper navbar-content">
-        <!-- Назва варіанту -->
         <div class="logo-container">
-            <span class="variant-text">variant 5</span>
+            <span class="variant-text">variant 5</span> <!-- Номер варіанту -->
         </div>
-
-        <!-- Номер лабораторної -->
-        <h1 class="lab-number">lab 9</h1>
+        <span class="log-out-button hidden">Log out</span> <!-- Кнопка виходу (поки прихована) -->
     </div>
 </nav>
 
+<!-- Основна частина сторінки -->
 <main>
-    <div class="container">
+    <div id="login-container" class="container">
 
-        <!-- Кнопки перемикання вкладок -->
+        <!-- Вкладки: авторизація і реєстрація -->
         <div class="tabs">
             <button class="tab-button active" data-tab="login">Авторизація</button>
             <button class="tab-button" data-tab="register">Реєстрація</button>
         </div>
 
-        <!-- Вкладка "Авторизація" -->
+        <!-- Вміст вкладки Авторизація -->
         <div class="tab-content active" id="login">
             <form id="loginForm" class="form" novalidate>
                 <h2>Увійти в акаунт</h2>
 
-                <!-- Поле: ім'я користувача -->
+                <!-- Ім'я користувача -->
                 <div class="form-group">
                     <label for="loginUsername">Ім'я користувача</label>
                     <input type="text" id="loginUsername" name="username" required>
                     <span class="error-message"></span>
                 </div>
 
-                <!-- Поле: пароль + іконка показу -->
+                <!-- Пароль з іконкою очка -->
                 <div class="form-group password-container">
                     <label for="loginPassword">Пароль</label>
                     <input type="password" id="loginPassword" name="password" required minlength="6">
-                    <i class="fas fa-eye password-toggle"></i> <!-- Іконка для показу пароля -->
+                    <i class="fas fa-eye password-toggle"></i> <!-- Очко для показу пароля -->
                     <span class="error-message"></span>
                 </div>
 
-                <!-- Чекбокс "Запам'ятати мене" -->
+                <!-- Чекбокс "Запам’ятати мене" -->
                 <div class="form-group remember">
                     <input type="checkbox" id="rememberMe" name="rememberMe">
                     <label for="rememberMe">Запам'ятати мене</label>
                 </div>
 
-                <!-- Кнопка входу -->
                 <button type="submit" class="submit-btn">Увійти</button>
             </form>
         </div>
 
-        <!-- Вкладка "Реєстрація" -->
+        <!-- Вміст вкладки Реєстрація -->
         <div class="tab-content" id="register">
             <form id="registerForm" class="form" novalidate>
                 <h2>Створити акаунт</h2>
@@ -100,7 +97,7 @@
                     <span class="error-message"></span>
                 </div>
 
-                <!-- Підтвердження пароля -->
+                <!-- Повтор пароля -->
                 <div class="form-group password-container">
                     <label for="confirmPassword">Підтвердіть пароль*</label>
                     <input type="password" id="confirmPassword" name="confirmPassword" required>
@@ -122,7 +119,7 @@
                     <span class="error-message"></span>
                 </div>
 
-                <!-- Стать -->
+                <!-- Гендер -->
                 <div class="form-group">
                     <label>Гендер*</label>
                     <div class="radio-group">
@@ -130,6 +127,8 @@
                         <label for="male">Чоловіча</label>
                         <input type="radio" id="female" name="sex" value="female">
                         <label for="female">Жіноча</label>
+                        <input type="radio" id="another" name="sex" value="another">
+                        <label for="another">Інша</label>
                     </div>
                     <span class="error-message"></span>
                 </div>
@@ -146,7 +145,7 @@
                     <span class="error-message"></span>
                 </div>
 
-                <!-- Місто (залежить від вибору країни) -->
+                <!-- Місто (буде активне після вибору країни) -->
                 <div class="form-group">
                     <label for="city">Місто*</label>
                     <select id="city" name="city" required disabled>
@@ -155,14 +154,13 @@
                     <span class="error-message"></span>
                 </div>
 
-                <!-- Прийняття умов -->
+                <!-- Погодження з умовами -->
                 <div class="form-group remember">
                     <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
                     <label for="acceptTerms">Погодитися з умовами</label>
                     <span class="error-message"></span>
                 </div>
 
-                <!-- Кнопка реєстрації -->
                 <button type="submit" class="submit-btn">Зареєструватися</button>
             </form>
         </div>
@@ -175,7 +173,10 @@
     </div>
 </main>
 
-<!-- Підключення JS (логіка взаємодії) -->
-<script src="script.js"></script>
+<!-- Скрипти для логіки форм -->
+<script src="public/js/controller.js"></script>
+<script src="public/js/login.js"></script>
+<script src="public/js/gallery.js"></script>
+
 </body>
 </html>
